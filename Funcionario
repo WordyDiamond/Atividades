@@ -1,0 +1,9 @@
+public class Funcionario extends Usuario{
+    public int cod_rh;
+
+    public Funcionario(String nome, int cpf, int cod_rh) {
+        super(nome, cpf);
+        this.cod_rh = cod_rh;
+    }
+
+}
