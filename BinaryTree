@@ -1,0 +1,61 @@
+public class BinaryTree {
+    Node root;
+
+    public BinaryTree() {
+        root = null;
+    }
+
+    public Node insert(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+
+        if (key < root.val) {
+            root.left = insert(root.left, key);
+        } else {
+            root.right = insert(root.right, key);
+        }
+
+        return root;
+    }
+
+    public Node minValueNode(Node node) {
+        Node current = node;
+
+        while (current.left != null) {
+            current = current.left;
+        }
+
+        return current;
+    }
+
+    public Node remove(Node root, int key) {
+        if (root == null) return root;
+
+        if (key < root.val) {
+            root.left = remove(root.left, key);
+        } else if (key > root.val) {
+            root.right = remove(root.right, key);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+
+            root.val = minValueNode(root.right).val;
+            root.right = remove(root.right, root.val);
+        }
+
+        return root;
+    }
+
+    public void inorder(Node root) {
+        if (root != null) {
+            inorder(root.left);
+            System.out.print(root.val + " ");
+            inorder(root.right);
+        }
+    }
+}
