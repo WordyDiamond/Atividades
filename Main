@@ -1,0 +1,29 @@
+public class Main {
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        Node root = null;
+
+        int[] elements = {50, 30, 20, 40, 70, 60, 80};
+        for (int element : elements) {
+            root = tree.insert(root, element);
+        }
+
+        System.out.println("Árvore em ordem (inorder traversal):");
+        tree.inorder(root);
+
+        System.out.println("\n\nRemovendo 20");
+        root = tree.remove(root, 20);
+        System.out.println("Árvore em ordem após remoção:");
+        tree.inorder(root);
+
+        System.out.println("\n\nRemovendo 30");
+        root = tree.remove(root, 30);
+        System.out.println("Árvore em ordem após remoção:");
+        tree.inorder(root);
+
+        System.out.println("\n\nRemovendo 50");
+        root = tree.remove(root, 50);
+        System.out.println("Árvore em ordem após remoção:");
+        tree.inorder(root);
+    }
+}
